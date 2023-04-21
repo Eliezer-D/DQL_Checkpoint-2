@@ -1,0 +1,60 @@
+1- Convertissez le diagramme de relation d'entité en modèle relationnel.
+CODE SQL :
+      Wine (Num_W*, Categorie, Years, Dégrée)
+      Producer(Num_P*, FirstName, LastName, Region)
+      Harvest(Num_H*, Num_W#, Num_P, Quantity)
+
+2- Donnez la liste des producteurs.
+CODE SQL :
+      SELECT FirstName, LastName, Region
+      FROM Producer
+      GROUP BY Producer.Num_P
+
+3- Donnez la liste des producteurs triés par nom.
+CODE SQL :
+      SELECT LastName
+      FROM Producer
+      GROUP BY Producer.Num_Prod
+
+4- Donner la liste des producteurs de Sousse(Tunisie).
+CODE SQL :
+      SELECT LastName, Region
+      FROM Producer
+      WHERE Producer.Region IN ('Sousse(Tunisie)')
+
+5- Calculer la quantité totale de vin produit portant le numéro 12.
+CODE SQL :
+      SELECT Categories, Years, degree
+      FROM Wine
+      INNER JOIN Harvest ON Wine.Num_Wine = Harvest.Num_Wine
+      WHERE Wine.Num_Wine =12
+      GROUP BY Harvest.Quantity
+
+6- Calculer la quantité de vin produit par catégorie.
+CODE SQL :
+      SELECT Categories, SUM(Quantity) AS Total_Qty
+      FROM Harvest
+      INNER JOIN Wine ON Harvest.Num_Wine = Wine.Num_Wine
+      WHERE Wine.Categories IN ('VIN ROUGE', 'VIN BLANC', 'VIN ROSE')
+      GROUP BY Wine.Categories
+
+7- Quels producteurs de la région de Sousse ont récolté au moins un vin en quantités supérieures à 300 litres ? 
+Nous voulons les noms et prénoms des producteurs, triés par ordre alphabétique.
+CODE SQL :
+      SELECT LastName, Region, Quantity
+      FROM Producer
+      INNER JOIN Harvest ON Producer.Num_Prod = Harvest.Num_Prod
+      WHERE Producer.Region IN ('Sousse(Tunisie)')
+      GROUP BY Harvest.Quantity
+      HAVING Quantity > 300
+      ORDER BY LastName ASC;
+
+8- Énumérez les numéros de vin qui ont un degré supérieur à 12 
+et qui ont été produits par le producteur numéro 24.
+
+SELECT Categories, degree, LastName, Years, Region
+FROM Wine
+INNER JOIN Harvest ON Wine.Num_Wine = Harvest.Num_Wine
+INNER JOIN Producer ON Harvest.Num_Prod = Producer.Num_Prod
+WHERE Producer.Num_Prod IN (24)
+GROUP BY Producer.Num_Prod
