@@ -1,0 +1,110 @@
+Nous avons créer notre propre liste de producteur de vin et les quantity
+Cette base de donéea été constituer par l'etudiant (Moi)
+
+===================================BASE DE DONNEES  EN SQL===========================================
+CREATE TABLE Wine (
+Num_Wine INT PRIMARY KEY,
+Categories VARCHAR(25) NOT NULL,
+Years INT NOT NUL
+Degree VARCHAR(25) NOT NULL);
+
+CREATE TABLE Producer (
+Num_Prod INT PRIMARY KEY,
+FirstName VARCHAR(25) NOT NULL,
+LastName VARCHAR(25) NOT NULL,
+Region VARCHAR(25) NOT NULL;
+
+CREATE TABLE Harvest (
+Num_Harv INT PRIMARY KEY,
+Num_Wine INT NOT NULL,
+Num_Prod INT NOT NULL,
+Quantity INT NOT NULL,
+FOREIGN KEY (Num_Wine) REFERENCES Wine(Num_Wine),
+FOREIGN KEY (Num_Prod) REFERENCES Producer(Num_Prod));
+
+
+INSERT INTO Wine (Num_Wine, Categories, Years, degree)
+    VALUES
+    (1, "VIN ROUGE", 1868, "14%"),
+    (2, "VIN BLANC", 1385, "15%"),
+    (3, "VIN ROUGE", 1864, "13%"),
+    (4, "VIN ROUGE", 1869, "14%"),
+    (5, "VIN ROUGE", 1810, "14%"),
+    (6, "VIN ROUGE", 2022, "16%"),
+    (7, "VIN BLANC", 1868, "13%"),
+    (8, "VIN BLANC", 1844, "15%"),
+    (9, "VIN ROUGE", 1979, "13,5%"),
+    (10, "VIN BLANC", 1992, "13%"),
+    (11, "VIN BLANC", 1959, "12%"),
+    (12, "VIN ROSE", 1930, "12%"),
+    (13, "VIN ROUGE", 2008, "14%"),
+    (14, "VIN BLANC", 1960, "11%"),
+    (15, "VIN BLANC", 1975, "15%"),
+    (16, "VIN ROSE", 2004, "12,5%"),
+    (17, "VIN BLANC", 2002, "13%"),
+    (18, "VIN BLANC", 1948, "14%"),
+    (19, "VIN BLANC", 1972, "13%"),
+    (20, "VIN ROUGE", 1964, "12%"),
+    (21, "VIN BLANC", 2004, "15%"),
+    (22, "VIN ROUGE", 2008, "11%"),
+    (23, "VIN ROSE", 1984, "18%"),
+    (24, "VIN BLANC", 2012, "10,5%"),
+    (25, "VIN ROSE", 2002, "12%");
+	
+
+    
+INSERT INTO Producer (Num_Prod, FirstName, LastName, Region)
+    VALUES
+    (1, "VIN", "Château Lafite Rothschild", "Pauillac(France)"),
+    (2, "VIN", "Marchesi Antinori", "Italie(Toscane)"),
+    (3, "VIN", "Bodegas Vega Sicilia", "Espagne(Ribera del Duero)"),
+    (4, "VIN", "Domaine de la Romanée-Conti", "France(Bourgogne)"),
+    (5, "VIN", "Château Margaux", "France(Margaux, Bordeaux)"),
+    (6, "VIN", "ELIEZER", "Sousse(Tunisie)"),
+    (7, "VIN", "Domaine Leroy", "Sousse(Tunisie)"),
+    (8, "VIN", "Penfolds Penfolds", "Australie(South Australia)"),
+    (9, "VIN", "Opus One", "États-Unis(Napa Valley, Californie)"),
+    (10, "VIN", "Domaine de la Grange des Pères", "France(Languedoc-Roussillon)"),
+    (11, "VIN", "Domaine Zind-Humbrecht", "France(Alsace)"),
+    (12, "VIN", "Château Mornag", "Mornag(Tunisie)"),
+    (13, "VIN", "Domaine Neferis", "Zaghouan(Tunisie)"),
+    (14, "VIN", "Domaine Atlas", "Manouba(Tunisie)"),
+    (15, "VIN", "Domaine Fadhloun", "Bizerte(Tunisie)"),
+    (16, "VIN", "Domaine de Tourelles", "Sousse(Tunisie)"),
+    (17, "VIN", "Domaine Sidi El Gorjani", "Nabeul(Tunisie)"),
+    (18, "VIN", "Coteaux d'Utique", "Sousse(Tunisie)"),
+    (19, "VIN", "Domaine Ben Khedher", "Sfax(Tunisie)"),
+    (20, "VIN", "Les Vignerons de Carthage", "Tunis(Tunisie)"),
+    (21, "VIN", "Domaine Vindemio", "Nabeul(Tunisie)"),
+    (22, "VIN", "Domaine Wardy", "Sousse(Tunisie)"),
+    (23, "VIN", "Vignoble Château Belle-Vue", "Bizerte(Tunisie)"),
+    (24, "VIN", "Domaine de Bargou", "Siliana(Tunisie)"),
+    (25, "VIN", "Domaine de Bir Mcherga", "Zaghouan(Tunisie)");
+    
+INSERT INTO Harvest (Num_Harv, Num_Wine, Num_Prod, Quantity)   
+    VALUES
+    (1, 3, 7, 250),
+    (2, 11, 4, 870),
+    (3, 5, 10, 500),
+    (4, 7, 1, 123),
+    (5, 9, 9, 480),
+    (6, 10, 6, 350),
+    (7, 4, 2, 260),
+    (8, 8, 11, 540),
+    (9, 1, 3, 180),
+    (10, 2, 8, 325),
+    (11, 6, 5, 910),
+    (12, 14, 18, 100),
+    (13, 20, 22, 800),
+    (14, 25, 20, 600),
+    (15, 17, 14, 500),
+    (16, 23, 24, 400),
+    (17, 19, 13, 300),
+    (18, 13, 19, 2000),
+    (19, 18, 23, 150),
+    (20, 24, 17, 8000),
+    (21, 15, 15, 510),
+    (22, 12, 21, 280),
+    (23, 22, 16, 865),
+    (24, 16, 25, 252),
+    (25, 21, 12, 3215),
